@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "mediasort"
   gem.homepage = "http://github.com/lodestone/mediasort"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Tidy up directory of media files}
+  gem.description = %Q{Sort media files from a directory into another directory in the format of: <YEAR>/<MONTH>/<YEAR-MONTH-DAY>/<FILENAME.EXT>}
   gem.email = "matt@kizmeta.com"
   gem.authors = ["Matt Petty"]
   # dependencies defined in Gemfile
