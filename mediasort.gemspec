@@ -6,13 +6,13 @@
 
 Gem::Specification.new do |s|
   s.name = "mediasort"
-  s.version = ""
+  s.version = "0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib"]
   s.authors = ["Matt Petty"]
   s.date = "2015-03-15"
-  s.description = "TODO: longer description of your gem"
+  s.description = "Sort media into date based subdirectories: <YEAR>/<MONTH>/<FULLDATE>/<FILENAME>"
   s.email = "matt@kizmeta.com"
   s.executables = ["mediasort"]
   s.extra_rdoc_files = [
@@ -34,7 +34,7 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/lodestone/mediasort"
   s.licenses = ["MIT"]
   s.rubygems_version = "2.4.5"
-  s.summary = "TODO: one-line summary of your gem"
+  s.summary = "Tidy up media directories"
 
   if s.respond_to? :specification_version then
     s.specification_version = 4
@@ -60,4 +60,3 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<simplecov>, [">= 0"])
   end
 end
-
