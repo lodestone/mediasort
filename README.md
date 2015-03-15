@@ -13,7 +13,16 @@ DSC0001.JPG was taken on March 14th, 2015, the script would sort it into a direc
 
 ### Installation:
 
+*This script requires exiftool but has no other dependencies besides standard libraries.*
+
+Use brew to install exiftool:
+
+    brew install exiftool
+
+Install the gem:
+
     gem install mediasort
+    
 
 ### Usage:
 
@@ -32,13 +41,7 @@ DSC0001.JPG was taken on March 14th, 2015, the script would sort it into a direc
 
 ## Contributing to mediasort
 
-* Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
-* Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
-* Fork the project.
-* Start a feature/bugfix branch.
-* Commit and push until you are happy with your contribution.
-* Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
-* Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
+* Send me a pull request.
 
 ### Copyright
 
