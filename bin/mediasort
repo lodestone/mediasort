@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+require 'optparse'
+require_relative '../lib/mediasort'
+
+options = {}
+OptionParser.new do |opts|
+
+  opts.banner = "Usage: sort-photos --input <input-path> --output <output-path> --mimetype <mimetype>"
+
+  opts.on("-i", "--input INPUT", "Root directory of media to be sorted") do |v|
+    options[:input] = v
+  end
+
+  opts.on("-o", "--output OUTPUT", "Root directory where the media will be stored") do |v|
+    options[:output] = v
+  end
+
+  opts.on("-m", "--mimetype MIMETYPE", "Limit by mimetype") do |v|
+    options[:mimetype] = v
+  end
+
+  opts.on("-v", "--verbose", "Show commands") do |v|
+    options[:verbose] = v
+  end
+
+  opts.on("-p", "--[no-]progress", "Show/Hide progress") do |v|
+    options[:progress] = v
+  end
+
+end.parse!
+
+Mediasort.work(options)
