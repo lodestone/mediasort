@@ -26,6 +26,7 @@ Gem::Specification.new do |s|
     "LICENSE.txt",
     "README.md",
     "Rakefile",
+    "VERSION",
     "bin/mediasort",
     "lib/mediasort.rb",
     "mediasort.gemspec",
