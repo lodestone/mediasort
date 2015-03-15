@@ -1,14 +1,28 @@
 require 'json'
 require 'time'
 
-module Mediasort
+class Mediasort
 
+  attr_accessor :options
 
-  def self.work(options)
+  def initialize(options)
+    @options = options
+  end
+
+  def clean_paths
+    options[:input]  = options[:input].gsub(/^\ /, "\\ ")
+    options[:output] = options[:output].gsub(/^\ /, "\\ ")
+    options[:input]  = options[:input].gsub(/~/, ENV["HOME"])
+    options[:output] = options[:output].gsub(/~/, ENV["HOME"])
+    options[:input]  = options[:input].gsub(/$\//, "")
+    options[:output] = options[:output].gsub(/$\//, "")
+  end
+
+  def check_options
 
     # Optional Arguments
-    options[:verbose] = false if options[:verbose].nil?
-    options[:progress] = true if options[:progress].nil?
+    options[:verbose]  = false if options[:verbose].nil?
+    options[:progress] = true  if options[:progress].nil?
 
     # Required Arguments
     if !options[:mimetype]
@@ -23,26 +37,29 @@ module Mediasort
       puts "Missing output argument!"
     end
 
-    options[:input] = options[:input].gsub(/^\ /, "\\ ")
-    options[:output] = options[:output].gsub(/^\ /, "\\ ")
-    options[:input] = options[:input].gsub(/~/, ENV["HOME"])
-    options[:output] = options[:output].gsub(/~/, ENV["HOME"])
-    options[:input] = options[:input].gsub(/$\//, "")
-    options[:output] = options[:output].gsub(/$\//, "")
+  end
+
+  def parse_json(d)
+    JSON.parse(`exiftool -json "#{d}"`).first
+  end
+
+  def work
+
+    check_options
+    clean_paths
 
     entries = Dir["#{options[:input]}/*"]
     entries = entries.length == 0  ? [] : entries
     entries.each do |d|
       begin
         if File.file?(d)
-          file = JSON.parse(`exiftool -json "#{d}"`).first
+          file = parse_json(d)
           if file && !file["MIMEType"].nil? && file["MIMEType"][options[:mimetype]]
             date = file["CreateDate"]
-
             if date
-              date = date.split(' ')
-              date = date[0].gsub(':', '-') + " " + date[1]
-              date = DateTime.parse(date)
+              date  = date.split(' ')
+              date  = date[0].gsub(':', '-') + " " + date[1]
+              date  = DateTime.parse(date)
               year  = date.year
               month = date.month
               day   = date.day
@@ -52,13 +69,15 @@ module Mediasort
               path = "#{year}/#{month}/#{year}-#{month}-#{day}"
 
               basedir = `dirname #{d}`
-              # puts "Moving file from #{d} to #{options[:output]}/#{path}"
               mkdir = "mkdir -p #{options[:output]}/#{path}"
               mv    = "mv -n #{d} #{options[:output]}/#{path}/"
+
               puts mkdir if options[:verbose]
               puts mv if options[:verbose]
+
               %x[#{mkdir}]
               %x[#{mv}]
+
               print '⋅' if options[:progress]
             end
           end
@@ -67,10 +86,6 @@ module Mediasort
         puts JSON::ParserError
       end
 
-
-      # TODO figure out the directory path
-      # TODO mkdir -p"
-      # TODO mv new directory
     end
 
   end

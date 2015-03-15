@@ -29,4 +29,4 @@ OptionParser.new do |opts|
 
 end.parse!
 
-Mediasort.work(options)
+Mediasort.new(options).work
