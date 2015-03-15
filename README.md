@@ -11,7 +11,11 @@ DSC0001.JPG was taken on March 14th, 2015, the script would sort it into a direc
 `2015/03/2015-03-14/DSC0001.JPG`
 *`<YEAR>/<MONTH>/<FULL-DATE>/<FILENAME>`*
 
-### Usage
+### Installation:
+
+    gem install mediasort
+
+### Usage:
 
 #### *Required Arguments*
 
