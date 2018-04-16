@@ -2,7 +2,6 @@ require 'json'
 require 'time'
 
 class Mediasort
-
   attr_accessor :options
 
   def initialize(options)
@@ -19,7 +18,6 @@ class Mediasort
   end
 
   def check_options
-
     # Optional Arguments
     options[:verbose]  = false if options[:verbose].nil?
     options[:progress] = true  if options[:progress].nil?
@@ -36,7 +34,6 @@ class Mediasort
     if !options[:output]
       puts "Missing output argument!"
     end
-
   end
 
   def parse_json(d)
@@ -44,7 +41,6 @@ class Mediasort
   end
 
   def work
-
     check_options
     clean_paths
 
@@ -87,7 +83,5 @@ class Mediasort
       end
 
     end
-
   end
-
 end
