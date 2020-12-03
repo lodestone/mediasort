@@ -5,7 +5,7 @@ require_relative '../lib/mediasort'
 options = {}
 OptionParser.new do |opts|
 
-  opts.banner = "Usage: sort-photos --input <input-path> --output <output-path> --mimetype <mimetype>"
+  opts.banner = "Usage: mediasort --input <input-path> --output <output-path> --mimetype <mimetype>"
 
   opts.on("-i", "--input INPUT", "Root directory of media to be sorted") do |v|
     options[:input] = v
