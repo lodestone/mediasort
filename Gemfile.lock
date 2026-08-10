@@ -34,7 +34,7 @@ GEM
     multi_json (1.15.0)
     multi_xml (0.6.0)
     multipart-post (2.1.1)
-    nokogiri (1.14.3-x86_64-linux)
+    nokogiri (1.19.4-x86_64-linux-gnu)
       racc (~> 1.4)
     oauth2 (1.4.4)
       faraday (>= 0.8, < 2.0)
@@ -44,7 +44,7 @@ GEM
       rack (>= 1.2, < 3)
     psych (5.1.2)
       stringio
-    racc (1.6.2)
+    racc (1.8.1)
     rack (2.2.6.2)
     rake (13.0.1)
     rchardet (1.8.0)
